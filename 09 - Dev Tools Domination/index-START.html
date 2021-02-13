@@ -1,0 +1,85 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log("Hello");
+
+    // Interpolated
+    console.log("Hello %s here","Maryada");
+    console.log(`Hello ${'Maryada'} here`);
+    
+    // Styled
+    console.log("%c This is styled","font-size:40px;background-color:red;text-shadow:10px 10px 0 blue;");
+    
+    // warning!
+    console.warn("This is a warning: oh no, oh no, oh, no no no no nooo")
+    
+    // Error :|
+    console.error("This is a(n) error")
+    
+    // Info
+    console.info("Peanuts aren’t technically nuts")
+   
+    // Testing
+    console.assert(1==2,"that is wrong 1!=2")
+
+    // clearing
+    // console.clear()
+    
+    // Viewing DOM Elements
+    const p= document.querySelector("p");
+      console.log(p);
+      console.dir(p)
+    
+      // Grouping together
+      dogs.forEach(dog=> {
+        // console.group(`${dog.name}`)
+        console.groupCollapsed(`${dog.name}`)
+        console.log("This is ",dog.name);
+        console.log(dog.name,"is",dog.age*7,"dog years old");
+        console.groupEnd(`${dog.name}`)
+      })
+    
+      // counting
+      console.count("Lodha")
+      console.count("Maryada")
+      console.count("Lodha")
+      console.count("Maryada")
+      console.count("Lodha")
+      console.count("Maryada")
+    
+      // timing used to check timing of an operation
+      console.time("Fetching data")
+      //async method 
+      fetch("https://api.github.com/users/maryada6")
+      .then((response)=>response.json())
+      .then(data=>{
+        console.timeEnd("Fetching data")
+        console.log(data);
+      })
+      .catch((error)=>{
+        console.log("Error occured");
+      })
+
+      //table
+      //so table comes b4 data
+      console.table(dogs)
+  </script>
+</body>
+</html>
